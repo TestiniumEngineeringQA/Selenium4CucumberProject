@@ -166,6 +166,7 @@ public class Steps {
     public void saniyeBekle(int second) {
         try {
             Thread.sleep(second);
+            waitByMilliSeconds(420000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
