@@ -29,5 +29,5 @@ Feature: Online Process
     * "https://www.amazon.com.tr/" sayfasina git
     * 4200 saniye bekle
     * "logo" elementine tikla
-    * 2 saniye bekle
+    * 4200 saniye bekle
     * "search" elementine tikla
