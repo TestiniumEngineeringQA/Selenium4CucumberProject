@@ -23,3 +23,11 @@ Feature: Online Process
     * 2 saniye bekle
     * "searchbar" elementine "telefon" degerini yaz
     * 2 saniye bekle
+
+  @deneme01Wait
+  Scenario: deneme01Wait
+    * "https://www.amazon.com.tr/" sayfasina git
+    * 420 saniye bekle
+    * "logo" elementine tikla
+    * 2 saniye bekle
+    * "search" elementine tikla
