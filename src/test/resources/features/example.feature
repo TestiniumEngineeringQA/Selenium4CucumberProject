@@ -1,22 +1,22 @@
 Feature: Web uygulamalarındaki temel kullanıcı işlemleri
 
-  @testinium
-  Scenario: Testinium giriş alanı kullanılabilir
+  @test1
+  Scenario: test1
     * "https://account.testinium.com/uaa/login" sayfasina git
     * Elementin yuklenmesini bekle "txtInput"
     * "txtInput" elementine "testinium" degerini yaz
     * "txtInput" elementine "ENTER" key gonder
 
-  @amazonSmoke
-  Scenario: Amazon ana sayfasının temel alanları görüntülenir
+  @test2
+  Scenario: test2
     * "https://www.amazon.com.tr/" sayfasina git
     * Elementin yuklenmesini bekle "logo"
     * "logo" elementinin bulundugunu kontrol et
     * Elementin yuklenmesini bekle "searchbar"
     * "searchbar" elementinin bulundugunu kontrol et
 
-  @amazon
-  Scenario: Amazon'da telefon araması yapılır
+  @test3
+  Scenario: test3
     * "https://www.amazon.com.tr/" sayfasina git
     * Elementin yuklenmesini bekle "searchbar"
     * 2 saniye bekle
