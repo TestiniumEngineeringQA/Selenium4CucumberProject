@@ -27,7 +27,5 @@ Feature: Online Process
   @deneme01Wait
   Scenario: deneme01Wait
     * "https://www.amazon.com.tr/" sayfasina git
-    * 4200 saniye bekle
     * "logo" elementine tikla
-    * 4200 saniye bekle
     * "search" elementine tikla
