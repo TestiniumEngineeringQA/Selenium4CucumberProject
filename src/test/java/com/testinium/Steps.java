@@ -164,12 +164,7 @@ public class Steps {
 
     @Then("{int} saniye bekle")
     public void saniyeBekle(int second) {
-        try {
-            Thread.sleep(second);
-            waitByMilliSeconds(420000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        waitByMilliSeconds(Duration.ofSeconds(second).toMillis());
     }
 
     @Given("{string} sayfasina git")
@@ -208,7 +203,8 @@ public class Steps {
             logger.info(milliseconds + " milisaniye bekleniyor.");
             Thread.sleep(milliseconds);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            Thread.currentThread().interrupt();
+            throw new IllegalStateException("Bekleme işlemi kesintiye uğradı.", e);
         }
     }
 

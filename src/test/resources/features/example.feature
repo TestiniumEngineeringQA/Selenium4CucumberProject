@@ -1,31 +1,25 @@
-Feature: Online Process
+Feature: Web uygulamalarındaki temel kullanıcı işlemleri
 
-  @deneme
-  Scenario: Google Testinium Search
+  @testinium @smoke
+  Scenario: Testinium giriş alanı kullanılabilir
     * "https://account.testinium.com/uaa/login" sayfasina git
+    * Elementin yuklenmesini bekle "txtInput"
     * "txtInput" elementine "testinium" degerini yaz
     * "txtInput" elementine "ENTER" key gonder
 
-  @deneme01
-  Scenario: deneme01
+  @amazon @smoke
+  Scenario: Amazon ana sayfasının temel alanları görüntülenir
     * "https://www.amazon.com.tr/" sayfasina git
-    * 2 saniye bekle
-    * "logo" elementine tikla
-    * 2 saniye bekle
-    * "search" elementine tikla
+    * Elementin yuklenmesini bekle "logo"
+    * "logo" elementinin bulundugunu kontrol et
+    * Elementin yuklenmesini bekle "searchbar"
+    * "searchbar" elementinin bulundugunu kontrol et
 
-
-  @deneme02
-  Scenario: deneme02
+  @amazon @search
+  Scenario: Amazon'da telefon araması yapılır
     * "https://www.amazon.com.tr/" sayfasina git
-    * 2 saniye bekle
-    * "searchbar" elementine tikla
+    * Elementin yuklenmesini bekle "searchbar"
     * 2 saniye bekle
     * "searchbar" elementine "telefon" degerini yaz
-    * 2 saniye bekle
-
-  @deneme01Wait
-  Scenario: deneme01Wait
-    * "https://www.amazon.com.tr/" sayfasina git
-    * "logo" elementine tikla
-    * "search" elementine tikla
+    * "searchbar" elementine "ENTER" key gonder
+    * Şuanki URL "telefon" değerini içeriyor mu kontrol et
