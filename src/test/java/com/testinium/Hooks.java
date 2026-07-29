@@ -20,14 +20,14 @@ import java.util.Map;
 public class Hooks {
 
     // Fallback; property/env yoksa buna düşer
-    private static final String defaultHub = "http://host.docker.internal:4444/wd/hub";
+    private final String defaultHub = "http://host.docker.internal:4444/wd/hub";
     //private final String defaultHub = "http://hub-devcluster.testinium.io:4444/wd/hub";
 
     protected static WebDriver driver;
     protected static Actions actions;
 
-    @BeforeAll
-    public static void beforeTest() throws MalformedURLException {
+    @Before
+    public void beforeTest() throws MalformedURLException {
         String browser = System.getProperty("browser", "chrome").toLowerCase();
 
         // URL önceliği: nodeUrl > hubURL > default
@@ -65,7 +65,7 @@ public class Hooks {
 
     // -------- Options Builders --------
 
-    public static ChromeOptions chromeOptions() {
+    public ChromeOptions chromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
         // Bildirimleri kapat vb.
@@ -86,7 +86,7 @@ public class Hooks {
         return options;
     }
 
-    public static FirefoxOptions firefoxOptions() {
+    public FirefoxOptions firefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
         options.addPreference("dom.webnotifications.enabled", false);
         options.addArguments("--kiosk");
