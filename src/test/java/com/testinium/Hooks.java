@@ -3,6 +3,8 @@ package com.testinium;
 import com.testinium.driver.TestiniumSeleniumDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver; // sadece import gerekirse kalsın
 import org.openqa.selenium.chrome.ChromeOptions;
@@ -18,14 +20,14 @@ import java.util.Map;
 public class Hooks {
 
     // Fallback; property/env yoksa buna düşer
-    private final String defaultHub = "http://host.docker.internal:4444/wd/hub";
+    private static final String defaultHub = "http://host.docker.internal:4444/wd/hub";
     //private final String defaultHub = "http://hub-devcluster.testinium.io:4444/wd/hub";
 
     protected static WebDriver driver;
     protected static Actions actions;
 
-    @Before
-    public void beforeTest() throws MalformedURLException {
+    @BeforeAll
+    public static void beforeTest() throws MalformedURLException {
         String browser = System.getProperty("browser", "chrome").toLowerCase();
 
         // URL önceliği: nodeUrl > hubURL > default
@@ -52,8 +54,8 @@ public class Hooks {
         actions = new Actions(driver);
     }
 
-    @After
-    public void afterTest() {
+    @AfterAll
+    public static void afterTest() {
         if (driver != null) {
             try { driver.quit(); } finally { driver = null; actions = null; }
         }
@@ -63,7 +65,7 @@ public class Hooks {
 
     // -------- Options Builders --------
 
-    public ChromeOptions chromeOptions() {
+    public static ChromeOptions chromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
         // Bildirimleri kapat vb.
@@ -84,7 +86,7 @@ public class Hooks {
         return options;
     }
 
-    public FirefoxOptions firefoxOptions() {
+    public static FirefoxOptions firefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
         options.addPreference("dom.webnotifications.enabled", false);
         options.addArguments("--kiosk");
