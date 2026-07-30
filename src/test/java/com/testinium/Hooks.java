@@ -23,7 +23,15 @@ public class Hooks {
     protected static Actions actions;
 
     @BeforeAll
-    static void beforeAll() throws MalformedURLException {
+    public static void beforeAll() throws MalformedURLException {
+        initializeDriver();
+    }
+
+    private static void initializeDriver() throws MalformedURLException {
+        if (driver != null) {
+            return;
+        }
+
         String browser = System.getProperty("browser", "chrome").toLowerCase();
         System.out.println("Running tests on browser: " + browser);
 
@@ -64,7 +72,16 @@ public class Hooks {
         }
     }
 
-    public static WebDriver getWebDriver() { return driver; }
+    public static WebDriver getWebDriver() {
+        if (driver == null) {
+            try {
+                initializeDriver();
+            } catch (MalformedURLException e) {
+                throw new IllegalStateException("WebDriver initialize edilemedi.", e);
+            }
+        }
+        return driver;
+    }
 
     // -------- Options Builders --------
 
