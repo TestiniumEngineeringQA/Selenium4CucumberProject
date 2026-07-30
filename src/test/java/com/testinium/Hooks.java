@@ -24,7 +24,7 @@ public class Hooks {
 
     @BeforeAll
     static void beforeAll() throws MalformedURLException {
-        String browser = System.getProperty("browser", "chrome").toLowerCase();,
+        String browser = System.getProperty("browser", "chrome").toLowerCase();
         System.out.println("Running tests on browser: " + browser);
 
         // URL önceliği: nodeUrl > hubURL > default
