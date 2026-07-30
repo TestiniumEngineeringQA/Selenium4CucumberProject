@@ -1,14 +1,10 @@
 package com.testinium;
 
 import com.testinium.driver.TestiniumSeleniumDriver;
-import io.cucumber.java.After;
-import io.cucumber.java.Before;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import io.cucumber.java.AfterAll;
+import io.cucumber.java.BeforeAll;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver; // sadece import gerekirse kalsın
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver; // sadece import gerekirse kalsın
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.interactions.Actions;
 
@@ -27,7 +23,7 @@ public class Hooks {
     protected static Actions actions;
 
     @BeforeAll
-    public static void beforeTest() throws MalformedURLException {
+    static void beforeAll() throws MalformedURLException {
         String browser = System.getProperty("browser", "chrome").toLowerCase();,
         System.out.println("Running tests on browser: " + browser);
 
@@ -117,7 +113,7 @@ public class Hooks {
     // -------- helpers --------
     private static String firstNonBlank(String... vals) {
         if (vals == null) return null;
-        for (String v : vals) if (v != null && !v.isBlank()) return v;
+        for (String v : vals) if (v != null && !v.isEmpty()) return v;
         return null;
     }
 }
