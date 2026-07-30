@@ -20,14 +20,14 @@ import java.util.Map;
 public class Hooks {
 
     // Fallback; property/env yoksa buna düşer
-    private final String defaultHub = "http://host.docker.internal:4444/wd/hub";
+    private static final String defaultHub = "http://host.docker.internal:4444/wd/hub";
     //private final String defaultHub = "http://hub-devcluster.testinium.io:4444/wd/hub";
 
     protected static WebDriver driver;
     protected static Actions actions;
 
-    @Before
-    public void beforeTest() throws MalformedURLException {
+    @BeforeAll
+    public static void beforeTest() throws MalformedURLException {
         String browser = System.getProperty("browser", "chrome").toLowerCase();
 
         // URL önceliği: nodeUrl > hubURL > default
@@ -71,7 +71,7 @@ public class Hooks {
 
     // -------- Options Builders --------
 
-    public ChromeOptions chromeOptions() {
+    public static ChromeOptions chromeOptions() {
         ChromeOptions options = new ChromeOptions();
 
         // Bildirimleri kapat vb.
@@ -81,8 +81,12 @@ public class Hooks {
 
         options.addArguments("--disable-notifications");
         options.addArguments("--start-fullscreen");
-        options.addArguments("--disable-gpu");
+
+        options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+
+
 
         if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
             options.addArguments("--headless=new");
@@ -92,11 +96,16 @@ public class Hooks {
         return options;
     }
 
-    public FirefoxOptions firefoxOptions() {
+    public static FirefoxOptions firefoxOptions() {
         FirefoxOptions options = new FirefoxOptions();
         options.addPreference("dom.webnotifications.enabled", false);
         options.addArguments("--kiosk");
         options.addArguments("--start-fullscreen");
+
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-gpu");
+
         if (Boolean.parseBoolean(System.getProperty("headless", "false"))) {
             options.addArguments("-headless");
         }
