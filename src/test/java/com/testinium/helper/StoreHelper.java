@@ -1,8 +1,8 @@
 package com.testinium.helper;
 
 import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
 import com.testinium.model.ElementInfo;
-import io.cucumber.messages.internal.com.google.gson.Gson;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
