@@ -42,6 +42,9 @@ public class Hooks {
             case "firefox" -> {
                 FirefoxOptions options = firefoxOptions();
                 // key vb. herhangi bir vendor capability EKLEME!
+                options.addArguments("--disable-dev-shm-usage");
+                options.addArguments("--no-sandbox");
+                options.addArguments("--disable-gpu");
                 driver = new TestiniumSeleniumDriver(grid, options);
             }
             default -> {
