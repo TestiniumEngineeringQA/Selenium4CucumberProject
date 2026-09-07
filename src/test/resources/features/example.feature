@@ -22,4 +22,4 @@ Feature: Web uygulamalarındaki temel kullanıcı işlemleri
     * 2 saniye bekle
     * "searchbar" elementine "telefon" degerini yaz
     * "searchbar" elementine "ENTER" key gonder
-    * Şuanki URL "telefon" değerini içeriyor mu kontrol et
+    * Şuanki URL "telefonhata" değerini içeriyor mu kontrol et
