@@ -23,3 +23,7 @@ Feature: Web uygulamalarındaki temel kullanıcı işlemleri
     * "searchbar" elementine "telefon" degerini yaz
     * "searchbar" elementine "ENTER" key gonder
     * Şuanki URL "telefonhata" değerini içeriyor mu kontrol et
+
+  @test4
+  Scenario: Yuklenen txt dosyasini oku ve yazdir
+    * "/app/uploads/fileName.txt" yolundaki txt dosyasını oku ve yazdır

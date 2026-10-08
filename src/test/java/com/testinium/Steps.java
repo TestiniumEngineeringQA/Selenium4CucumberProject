@@ -1,5 +1,9 @@
 package com.testinium;
 
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -479,6 +483,19 @@ public class Steps {
         List<WebElement> anchors = findElements(key);
         WebElement anchor = anchors.get(index);
         anchor.click();
+    }
+
+    @Given("{string} yolundaki txt dosyasını oku ve yazdır")
+    public void readTxtFileAndPrint(String filePath) throws IOException {
+        Path txtFile = Path.of(filePath);
+
+        assertTrue("Txt dosyası bulunamadı: " + txtFile, Files.isRegularFile(txtFile));
+
+        String content = Files.readString(txtFile, StandardCharsets.UTF_8);
+
+        System.out.printf("[FILE_READ_TEST] Txt dosyası bulundu: path=%s, size=%d bytes%n",
+                txtFile, Files.size(txtFile));
+        System.out.println(content);
     }
 
 }
