@@ -43,23 +43,20 @@ public class Hooks {
         );
         URL grid = new URL(gridUrl);
 
-        switch (browser) {
-            case "firefox" -> {
-                FirefoxOptions options = firefoxOptions();
-                // key vb. herhangi bir vendor capability EKLEME!
-                options.addArguments("--disable-dev-shm-usage");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-gpu");
-                driver = new TestiniumSeleniumDriver(grid, options);
-            }
-            default -> {
-                ChromeOptions options = chromeOptions();
-                // key vb. herhangi bir vendor capability EKLEME!
-                options.addArguments("--disable-dev-shm-usage");
-                options.addArguments("--no-sandbox");
-                options.addArguments("--disable-gpu");
-                driver = new TestiniumSeleniumDriver(grid, options);
-            }
+        if (browser.equals("firefox")) {
+            FirefoxOptions options = firefoxOptions();
+            // key vb. herhangi bir vendor capability EKLEME!
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-gpu");
+            driver = new TestiniumSeleniumDriver(grid, options);
+        } else {
+            ChromeOptions options = chromeOptions();
+            // key vb. herhangi bir vendor capability EKLEME!
+            options.addArguments("--disable-dev-shm-usage");
+            options.addArguments("--no-sandbox");
+            options.addArguments("--disable-gpu");
+            driver = new TestiniumSeleniumDriver(grid, options);
         }
 
         actions = new Actions(driver);
