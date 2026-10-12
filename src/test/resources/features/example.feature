@@ -26,4 +26,4 @@ Feature: Web uygulamalarındaki temel kullanıcı işlemleri
 
   @test4
   Scenario: Yuklenen txt dosyasini oku ve yazdir
-    * "/app/uploads/fileName.txt" yolundaki txt dosyasını oku ve yazdır
+    * "/app/uploads/fileNameKopyası.txt" yolundaki txt dosyasını oku ve yazdır
